@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {styles} from './styles';
-import FastImage from 'react-native-fast-image';
+import axios from 'axios';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -41,7 +41,7 @@ const AlbumListing = ({navigation}) => {
   };
   return (
     <View>
-      <View style={{backgroundColor: 'red'}}>
+      <View>
         <Text style={{textAlign: 'center', fontSize: 25}}>Popular Albums</Text>
       </View>
 
