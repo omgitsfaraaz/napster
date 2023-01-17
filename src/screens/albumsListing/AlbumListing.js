@@ -59,7 +59,9 @@ const AlbumListing = ({navigation}) => {
           width: windowWidth / 2.5,
           marginBottom: 30,
         }}
-        onPress={() => navigation.navigate('IndividualAlbum')}>
+        onPress={() =>
+          navigation.navigate('IndividualAlbum', {itemId: item.id})
+        }>
         <View style={styles.cd}></View>
         <View style={{position: 'absolute', borderRadius: 20}}>
           <Image
@@ -93,7 +95,7 @@ const AlbumListing = ({navigation}) => {
   };
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <View>
         <Text style={{textAlign: 'center', fontSize: 25}}>Popular Albums</Text>
       </View>
