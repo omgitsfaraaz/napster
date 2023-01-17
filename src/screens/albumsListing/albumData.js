@@ -1188,3 +1188,105 @@ export const albumData = {
     },
   ],
 };
+
+export const trackData = {
+  meta: {
+    returnedCount: 1,
+    totalCount: null,
+  },
+  tracks: [
+    {
+      type: 'track',
+      id: 'tra.735662620',
+      index: 1,
+      disc: 1,
+      href: 'https://api.napster.com/v2.2/tracks/tra.735662620',
+      playbackSeconds: 200,
+      isExplicit: false,
+      isStreamable: true,
+      isAvailableInHiRes: false,
+      name: 'Flowers',
+      isrc: 'USSM12209777',
+      upc: '196589803047',
+      shortcut: 'miley-cyrus/flowers/flowers',
+      blurbs: [],
+      artistId: 'art.9557743',
+      artistName: 'Miley Cyrus',
+      albumName: 'Flowers',
+      formats: [
+        {
+          type: 'format',
+          bitrate: 128,
+          name: 'MP3',
+          sampleBits: 16,
+          sampleRate: 44100,
+        },
+        {
+          type: 'format',
+          bitrate: 192,
+          name: 'AAC',
+          sampleBits: 16,
+          sampleRate: 44100,
+        },
+        {
+          type: 'format',
+          bitrate: 64,
+          name: 'AAC PLUS',
+          sampleBits: 16,
+          sampleRate: 44100,
+        },
+        {
+          type: 'format',
+          bitrate: 320,
+          name: 'AAC',
+          sampleBits: 16,
+          sampleRate: 44100,
+        },
+      ],
+      losslessFormats: [
+        {
+          type: 'format',
+          bitrate: 44100,
+          name: 'FLAC',
+          sampleBits: 16,
+          sampleRate: 44100,
+        },
+      ],
+      albumId: 'alb.735662619',
+      isAvailableInAtmos: false,
+      contributors: {
+        producer: 'art.31249603',
+        engineer: 'art.14898324',
+        guestMusician: 'art.108525469',
+        composer: 'art.408482279',
+        primaryArtist: 'art.9557743',
+        guestVocals: 'art.9557743',
+        featuredPerformer: 'art.9557743',
+      },
+      links: {
+        artists: {
+          ids: ['art.9557743'],
+          href: 'https://api.napster.com/v2.2/artists/art.9557743',
+        },
+        albums: {
+          ids: ['alb.735662619'],
+          href: 'https://api.napster.com/v2.2/albums/alb.735662619',
+        },
+        composers: {
+          ids: ['art.408482279'],
+          href: 'https://api.napster.com/v2.2/artists/art.408482279',
+        },
+        genres: {
+          ids: ['g.115', 'g.246', 'g.407'],
+          href: 'https://api.napster.com/v2.2/genres/g.115,g.246,g.407',
+        },
+        tags: {
+          ids: ['tag.152196495', 'tag.152196589', 'tag.152196531'],
+          href: 'https://api.napster.com/v2.2/tags/tag.152196495,tag.152196589,tag.152196531',
+        },
+      },
+      previewURL:
+        'https://listen.hs.llnwd.net/g3/prvw/7/9/9/4/5/2741454997.mp3',
+    },
+  ],
+};

@@ -5,7 +5,6 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
@@ -13,6 +12,7 @@ import axios from 'axios';
 import Config from 'react-native-config';
 import {albumData} from './albumData';
 import moment from 'moment';
+import Shimmer from 'react-native-shimmer';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -48,6 +48,7 @@ const AlbumListing = ({navigation}) => {
       .catch(err => {
         setLoading(false);
         console.log('err from api', err);
+        setAllAlbums(albumData.albums);
       });
   };
 
@@ -63,7 +64,6 @@ const AlbumListing = ({navigation}) => {
         <View style={{position: 'absolute', borderRadius: 20}}>
           <Image
             source={{
-              // uri: 'https://images.unsplash.com/photo-1524650359799-842906ca1c06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
               uri: `https://api.napster.com/imageserver/v2/albums/${item.id}/images/500x500.jpg`,
             }}
             style={{width: windowWidth / 3, height: 100, borderRadius: 10}}
@@ -74,10 +74,24 @@ const AlbumListing = ({navigation}) => {
             {item.name} {moment(item.originallyReleased).format('MMM YYYY')}
           </Text>
           <Text>{item.artistName}</Text>
+          <Text>{item.trackCount} Track(s)</Text>
         </View>
       </TouchableOpacity>
     );
   };
+
+  const renderEachAlbumLoad = ({item}) => {
+    return (
+      <Shimmer
+        style={{
+          width: windowWidth / 2.5,
+          marginBottom: 30,
+        }}>
+        <View style={[styles.cd, {backgroundColor: 'grey'}]}></View>
+      </Shimmer>
+    );
+  };
+
   return (
     <View>
       <View>
@@ -85,7 +99,25 @@ const AlbumListing = ({navigation}) => {
       </View>
 
       {loading ? (
-        <ActivityIndicator size={'small'} color={'#000'} />
+        <View
+          style={{
+            width: '90%',
+            alignSelf: 'center',
+            marginTop: 20,
+            paddingBottom: 50,
+          }}>
+          <FlatList
+            data={[1, 2, 3, 4, 5, 6, 7, 8]}
+            renderItem={renderEachAlbumLoad}
+            keyExtractor={item => item}
+            horizontal={false}
+            numColumns={2}
+            columnWrapperStyle={{
+              justifyContent: 'space-between',
+            }}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
       ) : (
         <View
           style={{
