@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AlbumListing from './src/screens/albumsListing/AlbumListing';
 import {NavigationContainer} from '@react-navigation/native';
 import IndividualAlbum from './src/screens/individualAlbum/IndividualAlbum';
+import Song from './src/screens/individualSong/Song';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const App = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="AlbumListing" component={AlbumListing} />
         <Stack.Screen name="IndividualAlbum" component={IndividualAlbum} />
+        <Stack.Screen name="Song" component={Song} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,4 +1,11 @@
-import {View, Text, Image, FlatList, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
@@ -32,14 +39,21 @@ const IndividualAlbum = ({route, navigation}) => {
 
   useEffect(() => {
     if (route.params.trackUrl) {
+      console.log('track url => useEffect', route.params.trackUrl);
       getAllTracks();
     }
   }, [route]);
 
   const renderEachAlbum = ({item, index}) => {
     return (
-      <View
-        style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+      <TouchableOpacity
+        style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}
+        onPress={() =>
+          navigation.navigate('Song', {
+            previewUrl: item.previewURL,
+            albumId: route.params.itemId,
+          })
+        }>
         <View style={{width: '10%'}}>
           <Text style={{textAlign: 'center'}}>
             {index.toString().length == 1 ? `0${index + 1}` : index + 1}
@@ -52,7 +66,7 @@ const IndividualAlbum = ({route, navigation}) => {
         <View style={{width: '10%'}}>
           <SimpleLineIcons name="options-vertical" size={15} color={'grey'} />
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -82,12 +96,13 @@ const IndividualAlbum = ({route, navigation}) => {
     setLoading(true);
     const config = {
       method: 'get',
-      url: `${route.params.trackUrl}/v2.2/albums/new`,
+      url: `${route.params.trackUrl}`,
       headers: {
         'Content-Type': 'application/json',
         apikey: Config.API_KEY,
       },
     };
+    console.log('getAllTracks => config', config);
     axios(config)
       .then(res => {
         if (res.data.tracks.length == 0) {
