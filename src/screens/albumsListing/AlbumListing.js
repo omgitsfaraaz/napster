@@ -60,7 +60,10 @@ const AlbumListing = ({navigation}) => {
           marginBottom: 30,
         }}
         onPress={() =>
-          navigation.navigate('IndividualAlbum', {itemId: item.id})
+          navigation.navigate('IndividualAlbum', {
+            itemId: item.id,
+            trackUrl: item.links.tracks.href,
+          })
         }>
         <View style={styles.cd}></View>
         <View style={{position: 'absolute', borderRadius: 20}}>
